@@ -24,10 +24,23 @@
 
         @foreach ($articles as $article)
         <div class="my-2 border-top p-3 rounded">
-            <h3 class="text-primary">{{ $article->title }}</h3>
+            <h3 class="text-primary"><a href="{{ route('articles.show', $article) }}">{{ $article->title }}</a></h3>
             <p class="text-secondary mt-3">{{ $article->created_at }} , 作者 : {{ $article->user->name }}</p>
+            
+            <div class="d-flex">
+                <a href="{{ route('articles.edit', $article) }}" class="btn btn-sm btn-outline-success mx-3">編輯</a>
+                <form action="{{ route('articles.destroy', $article) }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-sm btn-danger">刪除</button>
+                </form>
+            </div>
+
         </div>
         @endforeach
+        <div class="offset-6">
+            {{ $articles->links('pagination::bootstrap-4') }}
+        </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
