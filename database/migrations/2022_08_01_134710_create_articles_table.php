@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
-            $table->tinyInteger('status')->defaule(1);
+            $table->tinyInteger('status')->default(1);
             $table->softDeletes();
             $table->foreignId('user_id');
             $table->timestamps();
