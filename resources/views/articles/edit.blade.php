@@ -10,6 +10,9 @@
 </head>
 
 <body>
+    <nav class="m-3 text-right p-3">
+        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+    </nav>
     <main class="container text-center">
         <h1 class='text-secondary m-2'>編輯文章</h1>
         @if($errors->any())

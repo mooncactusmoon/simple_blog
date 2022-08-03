@@ -10,6 +10,19 @@
 </head>
 
 <body>
+    @if (Route::has('login'))
+    <nav class="m-3 text-right p-3">
+        @auth
+        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+        @else
+        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+
+        @if (Route::has('register'))
+        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+        @endif
+        @endauth
+    </nav>
+    @endif
     <main class="container">
         <div class="d-flex">
             <h1 class='text-secondary m-2'>{{$article->title}}</h1>
